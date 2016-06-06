@@ -14,5 +14,9 @@ vim config.yml
 
 ## Usage
 ```shell
-bundle exec ./create-milestones
+bundle exec ./create-milestones --help
+```
+
+```shell
+bundle exec ./create-milestones -m "My milestone" -e "2016-06-16"
 ```

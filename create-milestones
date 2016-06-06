@@ -3,16 +3,27 @@
 
 require 'octokit'
 require 'yaml'
+require 'optparse'
 
 # Read config
 config = YAML.load_file('config.yml')
 oauth_access_token = config.fetch('oauth_access_token')
 repos = config.fetch('repos')
 
-# TODO move to input arg
-milestone_name = 'Cártama - dataservices'
-end_date = '2016-06-16'
+options = {}
+OptionParser.new do |opts|
+  opts.banner = "Usage: #{__FILE__} [options]"
 
+  opts.on('-m"NAME"', '--milestone="NAME"', 'Milestone name') { |v| options[:milestone_name] = v }
+  opts.on('-e"DATE"', '--end-date="DATE"', 'End date (due date) with the format "YYYY-MM-DD"') { |v| options[:end_date] = v }
+
+end.parse!
+
+raise OptionParser::MissingArgument if options[:milestone_name].nil?
+raise OptionParser::MissingArgument if options[:end_date].nil?
+
+milestone_name = options[:milestone_name]
+end_date = options[:end_date]
 
 client = Octokit::Client.new(:access_token => oauth_access_token)
 

@@ -1,0 +1,7 @@
+# See https://help.github.com/articles/creating-an-access-token-for-command-line-use/
+oauth_access_token: 'your oauth access token here'
+
+repos: [
+    'orgname/repo1',
+    'orgname/repo2'
+]

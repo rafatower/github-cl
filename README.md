@@ -14,11 +14,11 @@ vim config.yml
 
 ## Usage
 ```shell
-bundle exec ./create-milestones --help
+bundle exec ./create-milestones.rb --help
 ```
 
 ```shell
-bundle exec ./create-milestones -m "My milestone" -e "2016-06-16"
+bundle exec ./create-milestones.rb -m "My milestone" -e "2016-06-16"
 ```
 
 ## To-do list

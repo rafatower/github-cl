@@ -20,3 +20,8 @@ bundle exec ./create-milestones --help
 ```shell
 bundle exec ./create-milestones -m "My milestone" -e "2016-06-16"
 ```
+
+## To-do list
+* [ ] Script to move issues to another milestone
+* [ ] Script to close milestone
+* [ ] Publish

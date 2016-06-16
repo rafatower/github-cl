@@ -18,10 +18,12 @@ bundle exec ./create-milestones.rb --help
 ```
 
 ```shell
-bundle exec ./create-milestones.rb -m "My milestone" -e "2016-06-16"
+bundle exec ./create-milestones.rb -m "My new milestone" -e "2016-06-16"
+bundle exec ./move-issues.rb --source="My old milestone" --dest="My new milestone"
+bundle exec ./close-milestones.rb --milestone="My old milestone"
 ```
 
 ## To-do list
-* [ ] Script to move issues to another milestone
-* [ ] Script to close milestone
+* [x] Script to move issues to another milestone
+* [x] Script to close milestone
 * [ ] Publish

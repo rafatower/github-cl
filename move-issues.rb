@@ -35,12 +35,24 @@ repos.each do |repo_name|
   print "    Checking if milestone '#{source_milestone_name}' exists... "
   rel = repo.rels[:milestones]
   milestones = rel.get.data
-  matching_milestone = milestones.select { |m| m[:title] == source_milestone_name  }.first
-  if matching_milestone
-    puts "YES"
-    puts "TODO: open destination milestone"
+  source_milestone = milestones.select { |m| m[:title] == source_milestone_name  }.first
+  if source_milestone
+    puts "        yes."
+    print "    Checking if destination milestone '#{dest_milestone_name}' exists... "
+    dest_milestone = milestones.select { |m| m[:title] == dest_milestone_name  }.first
+    if dest_milestone
+      puts ' ' * 8 + "yes."
+      puts ' ' * 8 + "Moving tickets..:"
+      client.list_issues(repo_name, milestone: source_milestone.number, state: 'open').each { |issue|
+        puts ' ' * 12 + "#{issue.title} ##{issue.number}"
+        client.update_issue(repo_name, issue.number, milestone: dest_milestone.number)
+      }
+      puts "        Done."
+    else
+      puts "        no. Nothing to do"
+    end
   else
-    puts "NO. Nothing to do"
+    puts "        no. Nothing to do"
   end
 
 end

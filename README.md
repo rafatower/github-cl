@@ -1,6 +1,6 @@
 # Github command-line tools
 ## Intro
-This is just a small repo with some utilities that I found useful to me.
+This is just a small repo with some utilities that I found useful to me, for my particular github + zenhub workflow.
 
 ## Installation
 ```shell

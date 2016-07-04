@@ -26,4 +26,4 @@ bundle exec ./close-milestones.rb --milestone="My old milestone"
 ## To-do list
 * [x] Script to move issues to another milestone
 * [x] Script to close milestone
-* [ ] Publish
+* [x] Publish

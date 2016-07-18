@@ -21,6 +21,7 @@ bundle exec ./create-milestones.rb --help
 bundle exec ./create-milestones.rb -m "My new milestone" -e "2016-06-16"
 bundle exec ./move-issues.rb --source="My old milestone" --dest="My new milestone"
 bundle exec ./close-milestones.rb --milestone="My old milestone"
+bundle exec ./create-milestones-no-due-date.rb -m "My new milestone"
 ```
 
 ## To-do list

@@ -38,15 +38,16 @@ repos.each do |repo_name|
   matching_milestone = milestones.select { |m| m[:title] == milestone_name  }.first
   if matching_milestone
     puts "    The milestone #{milestone_name} already exists"
-    if matching_milestone.due_on == Time.parse(end_date)
+    if matching_milestone.due_on.to_date.to_s == end_date
       puts "        and the 'due by' field matches the expected one."
     else
-      puts "        but the 'due by' field doesn't match"
-      raise 'TODO Fixing the due date is not implemented yet'
+      puts "        but the 'due by' field doesn't match. Fixing..."
+      client.update_milestone(repo_name, matching_milestone.number, due_on: end_date)
+      puts "            ...done."
     end
   else
     puts "    Creating milestone #{milestone_name}"
-    client.create_milestone(repo_name, milestone_name, {due_on: Time.parse(end_date)})
+    client.create_milestone(repo_name, milestone_name, due_on: Date.parse(end_date)+1)
   end
 
 end
